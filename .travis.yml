@@ -1,0 +1,17 @@
+language: python
+dist: focal  
+python:
+  - "3.10"    
+
+before_install:
+  - sudo apt-get update  # Update the package list to get latest versions
+
+install:
+  - python3 -m pip install --upgrade pip  # Ensure pip is up to date
+  - python3 -m pip install -r requirements.txt  # Install dependencies from requirements.txt
+
+script:
+  # Make only the required files executable
+  - chmod +x *  # Assuming * is the main Python script
+  - chmod +x rare  # Assuming rare is the compiled binary or executable
+  - python3 rare.py  # Run the main Python script
